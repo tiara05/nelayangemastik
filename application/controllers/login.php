@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class login extends CI_Controller {
+class Login extends CI_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('login_model');
+		$this->load->model('Login_model');
 	}
 
 	public function index()
@@ -26,7 +26,7 @@ class login extends CI_Controller {
 			$this->form_validation->set_rules('password', 'password', 'trim|required');
 
 			if ($this->form_validation->run() == TRUE) {
-				if($this->login_model->cek_user() == TRUE){
+				if($this->Login_model->cek_user() == TRUE){
 					redirect('Marketplace/index');
 				} else {
 					$this->session->set_flashdata('notif', 'Login gagal');
@@ -50,7 +50,7 @@ class login extends CI_Controller {
 			$this->form_validation->set_rules('password', 'password', 'trim|required');
 
 			if ($this->form_validation->run() == TRUE) {
-				if($this->login_model->tambah() == TRUE)
+				if($this->Login_model->tambah() == TRUE)
 				{
 					$this->session->set_flashdata('notif', 'Tambah kategori berhasil');
 					redirect('Marketplace/index');

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboardpelanggan_model extends CI_Model {
+class Marketplace extends CI_Model {
 	
 	public function get_data_barang_by_id($id)
 	{

@@ -14,7 +14,7 @@ class Barang_admin extends CI_Controller {
 		if($this->session->userdata('logged_in') == TRUE){
 
 			$data['main_view'] = 'Admin/barang_view';
-			$data['buku'] = $this->barang_admin_model->get_buku();
+			$data['buku'] = $this->Barang_admin_model->get_buku();
 
 			//get_kategori untuk dropdown tambah/edit buku
 			$data['kategori'] = $this->barang_admin_model->get_kategori();
@@ -42,7 +42,7 @@ class Barang_admin extends CI_Controller {
 				$config['max_size'] = '2000';
 				$this->load->library('upload', $config);
 				if($this->upload->do_upload('fotoikan')){
-					if($this->barang_admin_model->tambah($this->upload->data()) == TRUE)
+					if($this->Barang_admin_model->tambah($this->upload->data()) == TRUE)
 					{
 						$this->session->set_flashdata('notif', 'Tambah buku berhasil');
 						redirect('Barang_admin/index');
@@ -76,7 +76,7 @@ class Barang_admin extends CI_Controller {
 			$this->form_validation->set_rules('ubah_kategori', 'kategori', 'trim|required');
 
 			if ($this->form_validation->run() == TRUE) {
-				if($this->buku_model->ubah() == TRUE)
+				if($this->Barang_admin_model->ubah() == TRUE)
 				{
 					$this->session->set_flashdata('notif', 'Ubah buku berhasil');
 					redirect('buku/index');
@@ -99,7 +99,7 @@ class Barang_admin extends CI_Controller {
 	{
 		if($this->session->userdata('logged_in') == TRUE){
 
-			if($this->buku_model->hapus() == TRUE){
+			if($this->Barang_admin_model->hapus() == TRUE){
 				$this->session->set_flashdata('notif', 'Hapus buku Berhasil');
 				redirect('buku/index');
 			} else {
@@ -116,7 +116,7 @@ class Barang_admin extends CI_Controller {
 	{
 		if($this->session->userdata('logged_in') == TRUE){
 
-			$data = $this->barang_admin_model->get_data_buku_by_id($id);
+			$data = $this->Barang_admin_model->get_data_buku_by_id($id);
 			echo json_encode($data);
 
 		} else {

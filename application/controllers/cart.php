@@ -15,7 +15,7 @@ Class cart extends CI_Controller {
 		// $data['account'] = $this->account_model->get_account();
  		$data['cart_transaksi'] = $this->Cart_model->get_cart();
  		$data['cart'] = $this->Cart_model->get_cart();
-		$this->load->view('landing/Marketplace_Template', $data);
+		$this->load->view('landing/marketplace_template', $data);
 	}
 
 	public function cart()
@@ -59,11 +59,11 @@ Class cart extends CI_Controller {
 			if($this->Cart_model->tambah_transaksi() == TRUE)
 			{
 				$this->session->set_flashdata('notif', 'Proses pembelian berhasil');
-				redirect('cart/index');
+				redirect('Cart/index');
 
 			} else {
 				$this->session->set_flashdata('notif', 'Proses pembelian gagal');
-				redirect('cart/index');
+				redirect('Cart/index');
 			}
 
 	}

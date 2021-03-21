@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class favorit_model extends CI_Model {
+class Favorit_model extends CI_Model {
 
 	
 	public function get_favorit(){

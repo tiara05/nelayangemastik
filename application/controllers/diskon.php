@@ -1,19 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-Class diskon extends CI_Controller {
+Class Diskon extends CI_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('promo_model');
+		$this->load->model('Promo_model');
 	}
 
 	public function index()
 	{
-		$data['main_view'] = "Landing/diskon";
-		$data['promo'] = $this->promo_model->get_promo();
+		$data['main_view'] = "Landing/Diskon";
+		$data['promo'] = $this->Promo_model->get_promo();
  		
-		$this->load->view('landing/Marketplace_Template', $data);
+		$this->load->view('landing/marketplace_template', $data);
 	}
 }

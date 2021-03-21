@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class account_model extends CI_Model {
+class Account_model extends CI_Model {
 
 	public function get_account(){
 		return $this->db->where('username', $this->session->userdata('username'))

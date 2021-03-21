@@ -1,37 +1,37 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-Class detail extends CI_Controller {
+Class Detail extends CI_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('detail_model');
-		$this->load->model('favorit_model');
-		$this->load->model('barang_admin_model');
+		$this->load->model('Detail_model');
+		$this->load->model('Favorit_model');
+		$this->load->model('Barang_admin_model');
 	}
 
 	public function index()
 	{
-		$data['main_view'] = "Landing/detail";
+		$data['main_view'] = "Landing/Detail";
  		
-		$this->load->view('landing/Marketplace_Template', $data);
+		$this->load->view('landing/marketplace_template', $data);
 
 
 	}
 
 	public function get_detil_barang_by_id($id)
 	{
-		$data['main_view'] = "Landing/detail";
-		$detil_barang = $this->barang_admin_model->get_detil_barang_by_id($id);
+		$data['main_view'] = "Landing/Detail";
+		$detil_barang = $this->Barang_admin_model->get_detil_barang_by_id($id);
 		$data['detail_barang'] = $detil_barang;
 
-		$this->load->view('landing/Marketplace_Template', $data);
+		$this->load->view('landing/marketplace_template', $data);
 	}
 
 	public function tambah_ke_keranjang()
 	{
-		$barang = $this->detail_model->find($id);
+		$barang = $this->Detail_model->find($id);
 
 		$data = array(
 			'id_barang' => $barang->id_barang,
@@ -48,12 +48,12 @@ Class detail extends CI_Controller {
 	{
 		
 
-			if($this->detail_model->barang() == TRUE)
+			if($this->Detail_model->barang() == TRUE)
 			{
-				redirect('cart/index');
+				redirect('Cart/index');
 			} else {
 				$this->session->set_flashdata('notif', 'Data buku tidak ditemukan atau stok sudah habis!');
-				redirect('cart/index');
+				redirect('Cart/index');
 			}
 
 		
@@ -61,12 +61,12 @@ Class detail extends CI_Controller {
 
 	public function favorit()
 	{
-			if($this->favorit_model->favorit() == TRUE)
+			if($this->Favorit_model->favorit() == TRUE)
 			{
-				redirect('favorit/index');
+				redirect('Favorit/index');
 			} else {
 				$this->session->set_flashdata('notif', 'Data buku tidak ditemukan atau stok sudah habis!');
-				redirect('favorit/index');
+				redirect('Favorit/index');
 			}
 
 		

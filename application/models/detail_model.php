@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class detail_model extends CI_Model {
+class Detail_model extends CI_Model {
 
 	public function get_detail(){
 		return $this->db->join('kategori','kategori.id_kategori = barang.id_kategori')
