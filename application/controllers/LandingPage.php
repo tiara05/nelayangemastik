@@ -5,6 +5,6 @@ Class Landingpage extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('Landing/Landingpage');
+		$this->load->view('Landing/Landingpage_view');
 	}
 }
