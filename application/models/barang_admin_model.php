@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Barang_admin_model extends CI_Model {
+class barang_admin_model extends CI_Model {
 
 	public function get_buku(){
 		return $this->db->join('kategori','kategori.id_kategori = barang.id_kategori')
