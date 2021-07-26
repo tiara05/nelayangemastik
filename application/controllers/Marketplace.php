@@ -22,7 +22,7 @@ Class Marketplace extends CI_Controller {
  		$data['barangg2'] = $this->Barangadmin_model->get_barangg2();
  		$data['barangg3'] = $this->Barangadmin_model->get_barangg3();
  		$data['barangg4'] = $this->Barangadmin_model->get_barangg4();
-		$this->load->view('Landing/Marketplace_template', $data);
+		$this->load->view('Landing/Marketplace_Template', $data);
 	}
 
 	public function detil()
