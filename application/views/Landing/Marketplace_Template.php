@@ -55,7 +55,7 @@
                     </div>
                 </li>
                 <li>
-                    <span><a href="<?php echo base_url('index.php/login/logout'); ?>"><?php echo $this->session->userdata('username'); ?></a></span>
+                    <span><a href="<?php echo base_url('index.php/Login/logout'); ?>"><?php echo $this->session->userdata('username'); ?></a></span>
                 </li>
             </ul>
         </div>
@@ -204,7 +204,7 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         
       </div>
-      <form action="<?php echo base_url('index.php/login/cek_login'); ?>" method="post" enctype="multipart/form-data">
+      <form action="<?php echo base_url('index.php/Login/cek_login'); ?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
             
                 <input type="text" class="form-control" placeholder="Username" name="username" id="username">
