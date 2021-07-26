@@ -46,16 +46,35 @@ Class Detail extends CI_Controller {
 
 	public function barang()
 	{
-		
-
+		if($this->session->userdata('logged_in') == TRUE){
 			if($this->Detail_model->barang() == TRUE)
 			{
-				redirect('Cart/index');
+				redirect('marketplace/index');
 			} else {
 				$this->session->set_flashdata('notif', 'Data buku tidak ditemukan atau stok sudah habis!');
-				redirect('Cart/index');
+				redirect('marketplace/index');
 			}
+		}else {
+			redirect('Marketplace/index');
+		}
+		
+		
+	}
 
+	public function preorder()
+	{
+		if($this->session->userdata('logged_in') == TRUE){
+			if($this->Detail_model->preorder() == TRUE)
+			{
+				redirect('preorder/index');
+			} else {
+				$this->session->set_flashdata('notif', 'Data buku tidak ditemukan atau stok sudah habis!');
+				redirect('marketplace/index');
+			}
+		}else {
+			redirect('Marketplace/index');
+		}
+		
 		
 	}
 

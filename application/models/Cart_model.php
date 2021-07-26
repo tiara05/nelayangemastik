@@ -104,7 +104,7 @@ class Cart_model extends CI_Model {
 			$data_detil_transaksi = array(
 				'id_transaksi'	=> $last_insert_id,
 				'id_barang'		=> $this->input->post('id_barang')[$i],
-				'jumlah'		=> $this->input->post('jumlah')[$i]
+				'jumlah'		=> $this->input->post('jumlah')[$i],
 			);
 
 			//memasukan ke tabel detil transaksi
@@ -117,9 +117,6 @@ class Cart_model extends CI_Model {
 			
 			$this->db->where('id_barang', $this->input->post('id_barang')[$i])
 					 ->update('barang', $stok);
-
-			
-
 		}
 
 

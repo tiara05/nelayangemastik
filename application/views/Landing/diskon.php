@@ -19,7 +19,6 @@
                 <?php foreach($promo as $b) { ?>
                 <div class="col-sm-6" style="margin-bottom: 20px;">
                           <div class="card" >
-                            
                             <div class="card-body">
                                 <img class="card-img-top" src="<?php echo base_url();?>/assets/Market/img/promo.png" alt="Card image" style="width: 30%; float: left; padding-right: 15px;">
                               <h4 class="card-title" style="font-weight: bold;"><?php echo ''.$b->namapromo.''?></h4>

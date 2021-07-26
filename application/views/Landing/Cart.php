@@ -1,7 +1,14 @@
-    <script type="text/javascript"
-            src="https://app.sandbox.midtrans.com/snap/snap.js"
-            data-client-key="<SB-Mid-client-a0-fFzde0ENByRsG>"></script>
+    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="<SB-Mid-client-a0-fFzde0ENByRsG>"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+          $("#transfer").click(function(){
+            $("#bank").fadeIn();
+            $("#bank1").fadeIn();
+          });
+        });
+    </script>
     <section class="breadcrumb-section set-bg" data-setbg="<?php echo base_url();?>/assets/Market/img/dasar.png">
         <div class="container">
             <div class="row">
@@ -17,93 +24,116 @@
             </div>
         </div>
     </section>
-
     <section class="shoping-cart spad">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-
-                    <div class="shoping__cart__table">
-                    <form action="<?php echo base_url('index.php/cart/bayar'); ?>" method="post">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th class="shoping__product">Products</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $no = 1;
-                                if($cart != NULL){
-                                foreach ($cart as $b) {
-                                    echo '
-                                        <tr>
-                                            <input type="hidden" name="id_barang[]" value="'.$b->id_barang.'">
-                                            <td id="namabarang" style="float: left;">'.$b->namabarang.'</td>
-                                            <td id="harga">Rp '.$b->harga.'</td>
-                                            <td>
-                                               <input type="number" name="jumlah[]" class="form-control" onchange="hitung_subtotal('.$b->id_cart.','.$b->harga.',this.value,'.$b->id_barang.')" value="'.$b->jumlah.'"> 
-                                            </td>
-                                            <td id="total"><span id="subtot_'.$b->id_cart.'">Rp '.$b->harga*$b->jumlah.'</span></td>
-                                            
-                                        </tr>
-                                    ';
-                                    $no++;
-                                }} else {
-                                        echo '
-                                            <tr>
-                                                <td colspan="8">
-                                                    Keranjang belanja kosong.
-                                                </td>
-                                            </tr>
-                                        ';
-                                    }
-                            ?>
-                            </tbody>
-                        </table>
+            <div class="card">
+                <div class="card-body">
+                    <strong>Alamat Pengiriman</strong>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <p><strong><?php echo $this->session->userdata('username'); ?></strong><br>081332496225</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <p>alamat</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="shoping__cart__btns">
-                        <a href="<?php echo base_url('index.php/Marketplace')?>" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                        
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <strong>Produk Dipesan</strong>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="shoping__cart__btns" style="float: right;">
+                                <a href="<?php echo base_url('index.php/Marketplace')?>" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="col-lg-12">
-                    <?php
-                        if($cart_transaksi != NULL)
-                        {
-                            echo'
-                                    <div class="shoping__checkout">
-                                        <center><h4 style="font-weight: bold;">Cart Total</h4></center>
-                                        <br>
-                                        
-                                                        <ul>
-                                                            <li>Total <span id="total_belanja" style="font-size: 30px;"></span><span style="font-size: 30px;">Rp </span></li>
+                    <section class="shoping-cart spad">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                <div class="shoping__cart__table">
+                                    <form action="<?php echo base_url('index.php/checkout/index'); ?>" method="post">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Products</th>
+                                                    <th></th>
+                                                    <th>Price</th>
+                                                    <th>Quantity</th>
+                                                    <th>Total</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $no = 1;
+                                                if($cart != NULL){
+                                                foreach ($cart as $b) {
+                                                    echo '
+                                                        <tr>
+                                                            <input type="hidden" name="id_barang[]" value="'.$b->id_barang.'">
+                                                            <td><img src="'.base_url().'assets/Admin/fotoikan/'.$b->fotoikan.'" width="120px" height="90px" /></td>
+                                                            <td id="namabarang" >'.$b->namabarang.'</td>
+                                                            <td id="harga">Rp '.$b->harga.'</td>
+                                                            <td>
+                                                               <input type="number" name="jumlah[]" class="form-control" onchange="hitung_subtotal('.$b->id_cart.','.$b->harga.',this.value,'.$b->id_barang.')" value="'.$b->jumlah.'"> 
+                                                            </td>
+                                                            <td id="total"><span id="subtot_'.$b->id_cart.'">Rp '.$b->harga*$b->jumlah.'</span></td>
                                                             
-                                                        </ul>
-                                        
-                                        <input type="submit" name="submit" value="CHECK OUT" class="btn btn-lg btn-block btn-primary">
-
+                                                        </tr>
+                                                    ';
+                                                    $no++;
+                                                }} else {
+                                                        echo '
+                                                            <tr>
+                                                                <td colspan="8">
+                                                                    Keranjang belanja kosong.
+                                                                </td>
+                                                            </tr>
+                                                        ';
+                                                    }
+                                            ?>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    ';
-                                }
-                            ?>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <?php
+                                        if($cart_transaksi != NULL)
+                                        {
+                                            echo'
+                                                    <div class="shoping__checkout">
+                                                        <center><h4 style="font-weight: bold;">Cart Total</h4></center>
+                                                        <br>
+                                                        
+                                                                        <ul>
+                                                                            <li>Total <span id="total_belanja" style="font-size: 30px;"></span><span style="font-size: 30px;">Rp </span></li>
+                                                                            
+                                                                        </ul>
+                                                        
+                                                        <input type="submit" name="submit" value="CHECK OUT" class="btn btn-lg btn-block btn-primary" >
+
+                                                    </div>
+                                                    ';
+                                                }
+                                            ?>
+                                </div>
+                                <input type="hidden" name="nama_pembeli" value="<?php echo $this->session->userdata('username'); ?>" placeholder="NAMA PEMBELI" class="form-control input-lg" required>
+                            </div>
+                        </form>
+                        </div>
+                    </section>
                 </div>
-                <input type="hidden" name="nama_pembeli" value="<?php echo $this->session->userdata('username'); ?>" placeholder="NAMA PEMBELI" class="form-control input-lg" required>
             </div>
-        </form>
         </div>
     </section>
 
-    <script type="text/javascript">
+<script type="text/javascript">
     $.getJSON("<?php echo base_url('index.php/cart/get_total_belanja') ?>", function(data){
         $("#total_belanja").text(data.total);
     });

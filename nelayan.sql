@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2021 at 01:36 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.4
+-- Generation Time: Jul 26, 2021 at 04:11 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `nelayanku`
+-- Database: `nelayan`
 --
 
 -- --------------------------------------------------------
@@ -51,7 +51,8 @@ INSERT INTO `barang` (`id_barang`, `namabarang`, `stok`, `id_kategori`, `fotoika
 (9, 'Ikan Kembung', 3, 1, 'kembung.jpg', 2, 35000, 'Paling Laku', 'Ikan Mujair segar langsung ambil dari nelayan. 1 kg Mujair isi 10-15 ekor. '),
 (10, 'Kerang Darah', 6, 2, 'kerangdarah.jpg', 1, 34000, 'Diskon', 'Kerang darah segar langsung ambil dari nelayan. 1 kg kerang darah isi 10-15 biji. '),
 (11, 'Kerupuk Kemplang', 15, 4, 'kerupukkemplang.jpg', 1, 13500, 'Diskon', 'Kerupuk kemplang renyah dan nikmat dari ikan tengiri yang super segar. Kemasan 1 kg '),
-(12, 'Keripik Teri', 4, 4, 'keripikteri.jpg', 2, 34000, 'Diskon', 'Kerupuk kemplang renyah dan nikmat dari ikan teri asli yang super segar. Kemasan 1 kg ');
+(12, 'Keripik Teri', 4, 4, 'keripikteri.jpg', 2, 34000, 'Diskon', 'Kerupuk kemplang renyah dan nikmat dari ikan teri asli yang super segar. Kemasan 1 kg '),
+(13, 'Ikan Layur', 50, 1, 'a4.png', 1, 7800, 'Paling Laku', 'ikan ini di pancing dari laut selatan');
 
 -- --------------------------------------------------------
 
@@ -170,7 +171,8 @@ INSERT INTO `favorit` (`id_favorit`, `id_barang`) VALUES
 (1, 1),
 (2, 4),
 (3, 9),
-(4, 9);
+(4, 9),
+(0, 3);
 
 -- --------------------------------------------------------
 
@@ -211,6 +213,18 @@ INSERT INTO `kategori` (`id_kategori`, `namakategori`) VALUES
 (2, 'Ikan Air Tawar'),
 (3, 'Olahan Kaleng'),
 (4, 'Olahan Kerupuk');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pembayaran`
+--
+
+CREATE TABLE `pembayaran` (
+  `id_pembayaran` int(11) NOT NULL,
+  `nama_pembeli` varchar(20) NOT NULL,
+  `foto_bukti` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -256,6 +270,31 @@ INSERT INTO `pengguna` (`id_pengguna`, `nama`, `username`, `password`, `level`) 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `preeorder`
+--
+
+CREATE TABLE `preeorder` (
+  `id_preeorder` int(11) NOT NULL,
+  `id_barang` int(11) NOT NULL,
+  `nama` varchar(22) NOT NULL,
+  `alamat` text DEFAULT NULL,
+  `jumlah` int(11) DEFAULT NULL,
+  `kirim` date DEFAULT NULL,
+  `telepon` varchar(11) DEFAULT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'Pending'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `preeorder`
+--
+
+INSERT INTO `preeorder` (`id_preeorder`, `id_barang`, `nama`, `alamat`, `jumlah`, `kirim`, `telepon`, `status`) VALUES
+(1, 3, 'tiararahmani', 'sidoarjo', 2, '2021-07-01', '08133249622', 'Pending'),
+(2, 4, 'tiararahmani', 'bandung', 3, '2021-07-28', '93283', 'Pending');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `promo`
 --
 
@@ -276,6 +315,31 @@ INSERT INTO `promo` (`id_promo`, `namapromo`, `detailpromo`, `tanggal_mulai`, `t
 (2, 'Beli 1 Gratis 1', 'Pembelajaan Ikan Laut Tawar akan gratis produk kaleng', '2021-04-01', '2021-04-07'),
 (3, 'Raja Diskon', 'Pembelian minimal Rp 100.000; diskon 10%', '2021-03-01', '2021-04-30'),
 (4, 'Promo Gila', 'Setiap pembelian ikan laut 1 kg gratis kerupuk kemplang 1 pack', '2021-05-20', '2021-05-28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test`
+--
+
+CREATE TABLE `test` (
+  `id_test` int(11) NOT NULL,
+  `nama` varchar(20) NOT NULL,
+  `kendala` varchar(20) NOT NULL,
+  `tinggal` varchar(20) NOT NULL,
+  `jenis` varchar(20) NOT NULL,
+  `harga` varchar(20) NOT NULL,
+  `alasan` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `test`
+--
+
+INSERT INTO `test` (`id_test`, `nama`, `kendala`, `tinggal`, `jenis`, `harga`, `alasan`) VALUES
+(1, 'Susi', 'Tidak', '52', '', '51.000-100.000', 'Membuka usaha'),
+(2, 'TIARA RAHMANIA HADIN', 'Ya', '35', '', '51.000-100.000', 'Menambah kecerdasan'),
+(3, 'harya bima rahaditya', 'Ya', '33', 'Makanan Laut Segar', '51.000-100.000', 'Membuka usaha');
 
 -- --------------------------------------------------------
 
@@ -368,6 +432,57 @@ INSERT INTO `user` (`id_user`, `namauser`, `nomertelpon`, `email`, `alamat`, `us
 (1, 'Tiara Rahmania Hadiningrum', '081332496225', 'tiararahmania05@gmail.com', 'Villa Jasmine 1 blok i no.33', 'tiararahmani', 'tiara2001'),
 (2, 'harya bima rahadityawan', '837912381', 'harya.biem07@gmail.com', 'vj1', 'harya', 'bima');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wilayah_provinsi`
+--
+
+CREATE TABLE `wilayah_provinsi` (
+  `id` varchar(2) NOT NULL,
+  `nama` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `wilayah_provinsi`
+--
+
+INSERT INTO `wilayah_provinsi` (`id`, `nama`) VALUES
+('11', 'Aceh'),
+('12', 'Sumatera Utara'),
+('13', 'Sumatera Barat'),
+('14', 'Riau'),
+('15', 'Jambi'),
+('16', 'Sumatera Selatan'),
+('17', 'Bengkulu'),
+('18', 'Lampung'),
+('19', 'Kepulauan Bangka Belitung'),
+('21', 'Kepulauan Riau'),
+('31', 'Dki Jakarta'),
+('32', 'Jawa Barat'),
+('33', 'Jawa Tengah'),
+('34', 'Di Yogyakarta'),
+('35', 'Jawa Timur'),
+('36', 'Banten'),
+('51', 'Bali'),
+('52', 'Nusa Tenggara Barat'),
+('53', 'Nusa Tenggara Timur'),
+('61', 'Kalimantan Barat'),
+('62', 'Kalimantan Tengah'),
+('63', 'Kalimantan Selatan'),
+('64', 'Kalimantan Timur'),
+('65', 'Kalimantan Utara'),
+('71', 'Sulawesi Utara'),
+('72', 'Sulawesi Tengah'),
+('73', 'Sulawesi Selatan'),
+('74', 'Sulawesi Tenggara'),
+('75', 'Gorontalo'),
+('76', 'Sulawesi Barat'),
+('81', 'Maluku'),
+('82', 'Maluku Utara'),
+('91', 'Papua Barat'),
+('94', 'Papua');
+
 --
 -- Indexes for dumped tables
 --
@@ -376,80 +491,25 @@ INSERT INTO `user` (`id_user`, `namauser`, `nomertelpon`, `email`, `alamat`, `us
 -- Indexes for table `barang`
 --
 ALTER TABLE `barang`
-  ADD PRIMARY KEY (`id_barang`),
-  ADD UNIQUE KEY `namabarang` (`namabarang`),
-  ADD KEY `id_kategori` (`id_kategori`),
-  ADD KEY `id_nelayan` (`id_nelayan`),
-  ADD KEY `id_kategori_2` (`id_kategori`),
-  ADD KEY `id_nelayan_2` (`id_nelayan`),
-  ADD KEY `id_filter` (`filter`);
+  ADD PRIMARY KEY (`id_barang`);
 
 --
--- Indexes for table `cart`
+-- Indexes for table `pembayaran`
 --
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`id_cart`),
-  ADD KEY `id_barang` (`id_barang`);
+ALTER TABLE `pembayaran`
+  ADD PRIMARY KEY (`id_pembayaran`);
 
 --
--- Indexes for table `detil_transaksi`
+-- Indexes for table `preeorder`
 --
-ALTER TABLE `detil_transaksi`
-  ADD PRIMARY KEY (`id_detil_transaksi`),
-  ADD KEY `id_detil_transaksi` (`id_detil_transaksi`),
-  ADD KEY `id_transaksi` (`id_transaksi`),
-  ADD KEY `id_buku` (`id_barang`);
+ALTER TABLE `preeorder`
+  ADD PRIMARY KEY (`id_preeorder`);
 
 --
--- Indexes for table `favorit`
+-- Indexes for table `test`
 --
-ALTER TABLE `favorit`
-  ADD PRIMARY KEY (`id_favorit`),
-  ADD KEY `id_favorit` (`id_favorit`,`id_barang`),
-  ADD KEY `id_barang` (`id_barang`);
-
---
--- Indexes for table `filter`
---
-ALTER TABLE `filter`
-  ADD PRIMARY KEY (`id_filter`);
-
---
--- Indexes for table `kategori`
---
-ALTER TABLE `kategori`
-  ADD PRIMARY KEY (`id_kategori`);
-
---
--- Indexes for table `pencariikan`
---
-ALTER TABLE `pencariikan`
-  ADD PRIMARY KEY (`id_nelayan`);
-
---
--- Indexes for table `pengguna`
---
-ALTER TABLE `pengguna`
-  ADD PRIMARY KEY (`id_pengguna`);
-
---
--- Indexes for table `promo`
---
-ALTER TABLE `promo`
-  ADD PRIMARY KEY (`id_promo`);
-
---
--- Indexes for table `transaksi`
---
-ALTER TABLE `transaksi`
-  ADD PRIMARY KEY (`id_transaksi`),
-  ADD KEY `id_user` (`id_user`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`);
+ALTER TABLE `test`
+  ADD PRIMARY KEY (`id_test`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -459,103 +519,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `cart`
+-- AUTO_INCREMENT for table `pembayaran`
 --
-ALTER TABLE `cart`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+ALTER TABLE `pembayaran`
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `detil_transaksi`
+-- AUTO_INCREMENT for table `preeorder`
 --
-ALTER TABLE `detil_transaksi`
-  MODIFY `id_detil_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+ALTER TABLE `preeorder`
+  MODIFY `id_preeorder` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `favorit`
+-- AUTO_INCREMENT for table `test`
 --
-ALTER TABLE `favorit`
-  MODIFY `id_favorit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `filter`
---
-ALTER TABLE `filter`
-  MODIFY `id_filter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `kategori`
---
-ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `pencariikan`
---
-ALTER TABLE `pencariikan`
-  MODIFY `id_nelayan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `pengguna`
---
-ALTER TABLE `pengguna`
-  MODIFY `id_pengguna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `promo`
---
-ALTER TABLE `promo`
-  MODIFY `id_promo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `transaksi`
---
-ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `barang`
---
-ALTER TABLE `barang`
-  ADD CONSTRAINT `barang_ibfk_1` FOREIGN KEY (`id_nelayan`) REFERENCES `pencariikan` (`id_nelayan`),
-  ADD CONSTRAINT `barang_ibfk_2` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`);
-
---
--- Constraints for table `cart`
---
-ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`);
-
---
--- Constraints for table `detil_transaksi`
---
-ALTER TABLE `detil_transaksi`
-  ADD CONSTRAINT `detil_transaksi_ibfk_1` FOREIGN KEY (`id_transaksi`) REFERENCES `transaksi` (`id_transaksi`),
-  ADD CONSTRAINT `detil_transaksi_ibfk_2` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`);
-
---
--- Constraints for table `favorit`
---
-ALTER TABLE `favorit`
-  ADD CONSTRAINT `favorit_ibfk_1` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`);
-
---
--- Constraints for table `transaksi`
---
-ALTER TABLE `transaksi`
-  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+ALTER TABLE `test`
+  MODIFY `id_test` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

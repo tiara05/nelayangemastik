@@ -59,7 +59,7 @@ Class cart extends CI_Controller {
 			if($this->Cart_model->tambah_transaksi() == TRUE)
 			{
 				$this->session->set_flashdata('notif', 'Proses pembelian berhasil');
-				redirect('Cart/index');
+				redirect('Checkout/index');
 
 			} else {
 				$this->session->set_flashdata('notif', 'Proses pembelian gagal');

@@ -72,6 +72,14 @@
                             <input type="submit" class="btn btn-primary btn-lg btn-block" name="submit" value="ADD TO CARD">
                                 
                         </form>
+                        <br>
+                        
+                        <form action="<?php echo base_url('index.php/detail/preorder') ?>" method="post">
+                            <input type="hidden" class="form-control input-lg" placeholder="NAMA BUKU" name="id_barang" value="<?php echo $detail->id_barang ?>" required>
+                               
+                            <input type="submit" class="btn btn-primary btn-lg btn-block" name="submit" value="PREORDER">
+                                
+                        </form>
                         
                         
                         <ul>

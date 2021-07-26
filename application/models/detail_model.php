@@ -56,6 +56,30 @@ class Detail_model extends CI_Model {
 		}
 	}
 
+	public function preorder()
+	{
+		$data_cart = $this->db->where('barang.id_barang', $this->input->post('id_barang'))
+							  ->get('barang')
+							  ->row();
+		if($data_cart != NULL){
+
+			//cek stok
+			if($data_cart->stok > 0){
+				$cart_array = array(
+								'nama'			=> $this->session->userdata('username'),
+								'jumlah'		=> 1,
+								'id_barang' 	=> $data_cart->id_barang
+							);						
+				$this->db->insert('preeorder',$cart_array);
+
+				return TRUE;
+			} else {
+				return FALSE;
+			}
+		} else {
+			return FALSE;
+		}
+	}
 	
 }
 ?>
