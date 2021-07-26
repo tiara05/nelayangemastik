@@ -11,7 +11,7 @@ Class Marketplace extends CI_Controller {
 
 	public function index()
 	{
-		$data['main_view'] = "Landing/marketplace";
+		$data['main_view'] = "Landing/Marketplace";
 		$data['detail'] = "Landing/detail";
  		$data['buku'] = $this->Barangadmin_model->get_buku();
  		$data['barang'] = $this->Barangadmin_model->get_barang1();
