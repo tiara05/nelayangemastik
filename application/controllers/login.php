@@ -11,14 +11,9 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
-		if($this->session->userdata('logged_in') == TRUE){
+		$data['main_view'] = "Landing/Marketplace";
+		$this->load->view('Landing/Marketplace_Template', $data);
 
-			$data['main_view'] = "Landing/Marketplace";
-			$this->load->view('Landing/Marketplace_Template', $data);
-
-		} else {
-			$this->load->view('Login/index');
-		}
 	}
 
 	public function cek_login(){
