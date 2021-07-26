@@ -3,11 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 Class Marketplace extends CI_Controller {
 
-	// public function __construct()
-	// {
-	// 	parent::__construct();
-	// 	$this->load->model('barang_admin_model');
-	// }
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('barang_admin_model');
+	}
 
 	public function index()
 	{
