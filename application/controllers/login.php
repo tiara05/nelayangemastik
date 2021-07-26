@@ -13,10 +13,11 @@ class Login extends CI_Controller {
 	{
 		if($this->session->userdata('logged_in') == TRUE){
 
-			redirect('Marketplace/index');
+			$data['main_view'] = "Landing/Marketplace";
+			$this->load->view('Landing/Marketplace_Template', $data);
 
 		} else {
-			$this->load->view('Marketplace/index');
+			$this->load->view('Login/index');
 		}
 	}
 
@@ -27,14 +28,14 @@ class Login extends CI_Controller {
 
 			if ($this->form_validation->run() == TRUE) {
 				if($this->Login_model->cek_user() == TRUE){
-					redirect('Marketplace/index');
+					redirect('Login/index');
 				} else {
 					$this->session->set_flashdata('notif', 'Login gagal');
-					redirect('Marketplace/index');
+					redirect('Login/index');
 				}
 			} else {
 				$this->session->set_flashdata('notif', validation_errors());
-					redirect('Marketplace/index');
+					redirect('Login/index');
 			}
 
 	}
@@ -53,20 +54,20 @@ class Login extends CI_Controller {
 				if($this->Login_model->tambah() == TRUE)
 				{
 					$this->session->set_flashdata('notif', 'Tambah kategori berhasil');
-					redirect('Marketplace/index');
+					redirect('Login/index');
 				} else {
 					$this->session->set_flashdata('notif', 'Tambah kategori gagal');
-					redirect('Marketplace/index');
+					redirect('Login/index');
 				}
 			} else {
 				$this->session->set_flashdata('notif', validation_errors());
-				redirect('Marketplace/index');
+				redirect('Login/index');
 			}
 	}
 
 	public function logout(){
 		$this->session->sess_destroy();
-		redirect('Marketplace/index');
+		redirect('Login/index');
 	}
 
 }

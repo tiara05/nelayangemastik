@@ -14,7 +14,7 @@ Class Favorit extends CI_Controller {
 		$data['main_view'] = "Landing/Favorit";
 		// $data['account'] = $this->account_model->get_account();
  		$data['favorit'] = $this->Favorit_model->get_favorit();
-		$this->load->view('landing/marketplace_template', $data);
+		$this->load->view('Landing/Marketplace_Template', $data);
 	}
 
 	public function hapus()

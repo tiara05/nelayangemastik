@@ -96,7 +96,7 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li style="margin-right: 15px;"><a href="<?php echo base_url('index.php/favorit'); ?>"><i class="fa fa-heart"></i> </a></li>
+                            <li style="margin-right: 15px;"><a href="<?php echo base_url('index.php/Favorit'); ?>"><i class="fa fa-heart"></i> </a></li>
                             <li style="margin-right: 15px;"><a href="<?php echo base_url('index.php/cart'); ?>"><i class="fa fa-shopping-bag"></i></a></li>
                             <li style="margin-right: 15px;"><a href="<?php echo base_url('index.php/diskon'); ?>"><i class="fa fa-tags"></i></a></li>
                             <li style="margin-right: 15px;">
