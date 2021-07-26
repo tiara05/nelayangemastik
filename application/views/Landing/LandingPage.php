@@ -78,7 +78,7 @@
           <h1><br><br><strong>Nikmati seafood segar hanya dengan menunggu di rumah!</strong><br></h1>
           
           <div class="d-lg-flex">
-            <a href="<?php echo base_url('index.php/marketplace'); ?>" class="btn-get-started scrollto">AYO BELANJA</a>
+            <a href="<?php echo base_url('index.php/Marketplace'); ?>" class="btn-get-started scrollto">AYO BELANJA</a>
             
           </div>
         </div>
