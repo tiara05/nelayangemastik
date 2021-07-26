@@ -20,7 +20,7 @@ class Login extends CI_Controller {
 		}
 	}
 
-	public function cek_login(){
+	public function ceklogin(){
 
 			$this->form_validation->set_rules('username', 'username', 'trim|required');
 			$this->form_validation->set_rules('password', 'password', 'trim|required');
