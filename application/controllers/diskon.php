@@ -14,6 +14,6 @@ Class Diskon extends CI_Controller {
 		$data['main_view'] = "Landing/Diskon";
 		$data['promo'] = $this->Promo_model->get_promo();
  		
-		$this->load->view('landing/marketplace_template', $data);
+		$this->load->view('Landing/Marketplace_Template', $data);
 	}
 }

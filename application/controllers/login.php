@@ -13,6 +13,7 @@ class Login extends CI_Controller {
 	{
 		$data['main_view'] = "Landing/Marketplace";
 		$this->load->view('Landing/Marketplace_Template', $data);
+
 	}
 
 	public function cek_login(){
@@ -22,12 +23,10 @@ class Login extends CI_Controller {
 
 			if ($this->form_validation->run() == TRUE) {
 				if($this->Login_model->cek_user() == TRUE){
-					$data['main_view'] = "Landing/Marketplace";
-					$this->load->view('Landing/Marketplace_Template', $data);
+					redirect('Login/index');
 				} else {
 					$this->session->set_flashdata('notif', 'Login gagal');
-					$data['main_view'] = "Landing/Marketplace";
-					$this->load->view('Landing/Marketplace_Template', $data);
+					redirect('Login/index');
 				}
 			} else {
 				$this->session->set_flashdata('notif', validation_errors());
