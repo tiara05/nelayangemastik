@@ -8,7 +8,7 @@ Class Detail extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Detail_model');
 		$this->load->model('Favorit_model');
-		$this->load->model('Barang_admin_model');
+		$this->load->model('Barangadmin_model');
 	}
 
 	public function index()
@@ -23,7 +23,7 @@ Class Detail extends CI_Controller {
 	public function get_detil_barang_by_id($id)
 	{
 		$data['main_view'] = "Landing/Detail";
-		$detil_barang = $this->Barang_admin_model->get_detil_barang_by_id($id);
+		$detil_barang = $this->Barangadmin_model->get_detil_barang_by_id($id);
 		$data['detail_barang'] = $detil_barang;
 
 		$this->load->view('landing/marketplace_template', $data);

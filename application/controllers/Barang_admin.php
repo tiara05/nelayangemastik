@@ -6,7 +6,7 @@ class Barang_admin extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Barang_admin_model');
+		$this->load->model('Barangadmin_model');
 	}
 
 	public function index()
@@ -14,11 +14,11 @@ class Barang_admin extends CI_Controller {
 		if($this->session->userdata('logged_in') == TRUE){
 
 			$data['main_view'] = 'Admin/barang_view';
-			$data['buku'] = $this->Barang_admin_model->get_buku();
+			$data['buku'] = $this->Barangadmin_model->get_buku();
 
 			//get_kategori untuk dropdown tambah/edit buku
-			$data['kategori'] = $this->Barang_admin_model->get_kategori();
-			$data['nelayan'] = $this->Barang_admin_model->get_nelayan();
+			$data['kategori'] = $this->Barangadmin_model->get_kategori();
+			$data['nelayan'] = $this->Barangadmin_model->get_nelayan();
 			$this->load->view('Admin/template', $data);
 
 		} else {
@@ -51,7 +51,7 @@ class Barang_admin extends CI_Controller {
 					redirect('Barang_admin/index');
 				}
 				else{
-					if($this->Barang_admin_model->tambah($this->upload->data('file_name'))){
+					if($this->Barangadmin_model->tambah($this->upload->data('file_name'))){
 						$this->session->set_flashdata('notif', 'Upload foto Berhasil');	
 					} else {
 						$this->session->set_flashdata('notif', 'Upload foto Gagal');	
@@ -59,7 +59,7 @@ class Barang_admin extends CI_Controller {
 					redirect('Barang_admin/index');		
 				}
 			} else {
-				if($this->Barang_admin_model->tambah('')){
+				if($this->Barangadmin_model->tambah('')){
 					$this->session->set_flashdata('notif', 'sukses menambah tp gagal upload');	
 				} else {
 					$this->session->set_flashdata('notif', 'gagal menambah');	
@@ -88,7 +88,7 @@ class Barang_admin extends CI_Controller {
 			$this->form_validation->set_rules('ubah_deskripsi', 'Deskripsi', 'trim|required');
 
 			if ($this->form_validation->run() == TRUE) {
-				if($this->Barang_admin_model->ubah() == TRUE)
+				if($this->Barangadmin_model->ubah() == TRUE)
 				{
 					$this->session->set_flashdata('notif', 'Ubah kategori berhasil');
 					redirect('Barang_admin/index');
@@ -110,7 +110,7 @@ class Barang_admin extends CI_Controller {
 	public function hapus()
 	{
 		if($this->session->userdata('logged_in') == TRUE){
-			if($this->Barang_admin_model->hapus() == TRUE)
+			if($this->Barangadmin_model->hapus() == TRUE)
 				{
 					$this->session->set_flashdata('notif', 'Hapus Barang berhasil');
 					redirect('Barang_admin/index');
@@ -128,7 +128,7 @@ class Barang_admin extends CI_Controller {
 	{
 		if($this->session->userdata('logged_in') == TRUE){
 
-			$data = $this->Barang_admin_model->get_data_buku_by_id($id);
+			$data = $this->Barangadmin_model->get_data_buku_by_id($id);
 			echo json_encode($data);
 
 		} else {

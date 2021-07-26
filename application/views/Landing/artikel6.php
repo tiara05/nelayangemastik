@@ -98,45 +98,49 @@
               <hr style="border: 1px solid #BDBDBD">
               <!-- ======= Services Section ======= -->
               <section id="services" class="services section-bg">
-                  <div class="row">
-                    <div class="col-xl-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                      <div class="icon-box">
-                        <center>
-                          <img src="<?php echo base_url();?>/assets/img/card.png" style="max-width: 250px;">
-                          <br><br><h4><a href="">Manfaat Mengkonsumsi Ikan</a></h4>
-                          
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elit mauris quis massa nec. Proin adipiscing arcu amet maecenas etiam faucibus quam nisl, urna. Eros, ut vitae purus massa</p>
-                        </center>
-                        <br><a href="bacaselengkapnya.html" class="" style="float: right;">Baca Selengkapnya...</a>
-                      </div>
-                    </div>
+      <div class="container" data-aos="fade-up">
+        <h1 style="text-align: center;"><strong>ARTIKEL</strong></h1><br>
+        <div class="row">
+          <div class="col-xl-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box">
+              <center>
+                <img src="assets/img/ikanartikel2.png" style="max-width: 250px;">
+                <br><br><h4><a href="">IKAN TINGGI OMEGA-3 TERMASUK MAKANAN PENURUN DARAH TINGGI</a></h4>
+                
+                <p>Seseorang yang memiliki hipertensi (tekanan darah tinggi) perlu minum obat darah tinggi secara rutin untuk membantu menjaga tekanan darah normal. Mereka juga perlu mengubah gaya hidupnya jadi lebih segar supaya tubuh mereka selalu sehat...</p>
+              </center>
+              <br><a href="<?php echo base_url('index.php/artikel/artikel2'); ?>" class="" style="float: right;">Baca Selengkapnya...</a>
+            </div>
+          </div>
 
-                    <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-                      <div class="icon-box">
-                        <center>
-                          <img src="<?php echo base_url();?>/assets/img/card.png" style="max-width: 250px;">
-                          <br><br><h4><a href="">Manfaat Mengkonsumsi Ikan</a></h4>
-                          
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elit mauris quis massa nec. Proin adipiscing arcu amet maecenas etiam faucibus quam nisl, urna. Eros, ut vitae purus massa</p>
-                        </center>
-                        <br><a href="bacaselengkapnya.html" class="" style="float: right;">Baca Selengkapnya...</a>
-                      </div>
-                    </div>
+          <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box">
+              <center>
+                <img src="assets/img/ikanartikel3.png" style="max-width: 250px;">
+                <br><br><h4><a href="">ALASAN MENGAPA MENGKONSUMSI IKAN BISA MEMBUAT ANAK CERDAS</a></h4>
+                
+                <p>Ikan adalah salah satu jenis makanan yang paling sehat karena kaya akan nutrisi, banyak mengandung omega 3 dan omega 6 yang berperan penting dalam pembentukan dan perkembangan sel otak. Hal itu diyakini akan memberi dampak yang baik...</p>
+              </center>
+              <br><a href="<?php echo base_url('index.php/artikel/artikel3'); ?>" class="" style="float: right;">Baca Selengkapnya...</a>
+            </div>
+          </div>
 
-                    <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
-                      <div class="icon-box">
-                        <center>
-                          <img src="<?php echo base_url();?>/assets/img/card.png" style="max-width: 250px;">
-                          <br><br><h4><a href="">Manfaat Mengkonsumsi Ikan</a></h4>
-                          
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elit mauris quis massa nec. Proin adipiscing arcu amet maecenas etiam faucibus quam nisl, urna. Eros, ut vitae purus massa</p>
-                        </center>
-                        <br><a href="bacaselengkapnya.html" class="" style="float: right;">Baca Selengkapnya...</a>
-                      </div>
-                    </div>
-                  </div>
-                  <center><a href="<?php echo base_url('index.php/artikel');?>"><button type="button" class="btn btn-primary" style="margin-top: 30px; background-color: #99D1F7; border-color: #99D1F7; color: black;">BACA ARTIKEL LAINNYA</button></a></center>
-              </section><!-- End Services Section -->
+          <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box">
+              <center>
+                <img src="assets/img/ikanartikel1.png" style="max-width: 250px;">
+                <br><br><h4><a href="">IKAN YANG BAIK DIKONSUMSI UNTUK KESEHATAN JANTUNG</a></h4>
+                
+                <p>Ikan sebagai sumber protein, ikan kaya akan asam lemak esensial, asam lemak omega-3 yang  berperan penting dalam kesehatan otak dan jantung. Dilansir dari laman Healthline, The American Heart Association (AHA) merekomendasikan makan ikan minimal 2 kali seminggu, terutama...</p>
+              </center>
+              <br><a href="<?php echo base_url('index.php/artikel/artikel1'); ?>" class="" style="float: right;">Baca Selengkapnya...</a>
+            </div>
+          </div>
+        </div>
+        <center><a href="<?php echo base_url('index.php/artikel');?>"><button type="button" class="btn btn-primary" style="margin-top: 30px; background-color: #99D1F7; border-color: #99D1F7; color: black;">BACA ARTIKEL LAINNYA</button></a></center>
+      </div>
+
+    </section><!-- End Services Section -->
             </div>
         </div>
         </div>

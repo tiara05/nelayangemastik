@@ -27,10 +27,10 @@ Class Test extends CI_Controller {
 				if($this->Test_model->tambah() == TRUE)
 				{
 					$this->session->set_flashdata('notif', 'Tambah Test berhasil');
-					redirect('Landingpage/index');
+					redirect('LandingPage/index');
 				} else {
 					$this->session->set_flashdata('notif', 'Tambah Test gagal');
-					redirect('Landingpage/index');
+					redirect('LandingPage/index');
 				}
 			} else {
 				$this->session->set_flashdata('notif', validation_errors());

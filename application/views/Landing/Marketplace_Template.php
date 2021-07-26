@@ -55,7 +55,7 @@
                     </div>
                 </li>
                 <li>
-                    <span><a href="<?php echo base_url('index.php/Login/logout'); ?>"><?php echo $this->session->userdata('username'); ?></a></span>
+                    <span><a href="<?php echo base_url('index.php/login/logout'); ?>"><?php echo $this->session->userdata('username'); ?></a></span>
                 </li>
             </ul>
         </div>

@@ -23,14 +23,14 @@ class Login extends CI_Controller {
 
 			if ($this->form_validation->run() == TRUE) {
 				if($this->Login_model->cek_user() == TRUE){
-					redirect('Login/index');
+					redirect('Marketplace');
 				} else {
 					$this->session->set_flashdata('notif', 'Login gagal');
-					redirect('Login/index');
+					redirect('Marketplace');
 				}
 			} else {
 				$this->session->set_flashdata('notif', validation_errors());
-					redirect('Login/index');
+					redirect('Marketplace');
 			}
 
 	}
@@ -49,20 +49,20 @@ class Login extends CI_Controller {
 				if($this->Login_model->tambah() == TRUE)
 				{
 					$this->session->set_flashdata('notif', 'Tambah kategori berhasil');
-					redirect('Login/index');
+					redirect('Marketplace');
 				} else {
 					$this->session->set_flashdata('notif', 'Tambah kategori gagal');
-					redirect('Login/index');
+					redirect('Marketplace');
 				}
 			} else {
 				$this->session->set_flashdata('notif', validation_errors());
-				redirect('Login/index');
+				redirect('Marketplace');
 			}
 	}
 
 	public function logout(){
 		$this->session->sess_destroy();
-		redirect('Login/index');
+		redirect('Marketplace');
 	}
 
 }
