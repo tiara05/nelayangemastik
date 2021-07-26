@@ -27,14 +27,14 @@ class Login extends CI_Controller {
 
 			if ($this->form_validation->run() == TRUE) {
 				if($this->Login_model->cek_user() == TRUE){
-					redirect('Marketplace/index');
+					redirect('marketplace/index');
 				} else {
 					$this->session->set_flashdata('notif', 'Login gagal');
-					redirect('Marketplace/index');
+					redirect('marketplace/index');
 				}
 			} else {
 				$this->session->set_flashdata('notif', validation_errors());
-					redirect('Marketplace/index');
+					redirect('marketplace/index');
 			}
 
 	}
